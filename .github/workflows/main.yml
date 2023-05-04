@@ -1,13 +1,13 @@
-Name: Hello World
+name: Hello WOrld
 
-on: [push, pull_request]
+on:
+  push: {branches: main}
+  pull_request: {branches: main}
 
 jobs:
-  hello-world:
+  test:
     runs-on: ubuntu-latest
-
+    name: Check licenses
     steps:
       - uses: actions/checkout@v2
-
-    #Runs a single command
-      - uses: ./
+      - run: node index.js
