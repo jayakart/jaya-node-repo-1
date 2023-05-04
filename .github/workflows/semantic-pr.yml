@@ -3,7 +3,6 @@
 
 name: Check PR title is compliant
 on:
-  # This will always run using configuration from main branch of the target repo.
   pull_request:
     types:
       - opened
@@ -12,10 +11,12 @@ on:
 
 jobs:
   pr-title-check:
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'release-please--') }}
+    # Set the agent to run on
     name: Validate PR title
     runs-on: ubuntu-latest
     steps:
-      - uses: amannn/action-semantic-pull-request@v4
+      - uses: lbg-cloud-platform/lcp-action-semantic-pull-request@362b331f5a419ded77c6a052a37d6b4ca389c376
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -26,14 +27,12 @@ jobs:
             feat
             chore
           # The subject must start with a jira number
-          subjectPattern: ^([A-Z]+-[0-9]+|release\s+[0-9]+\.[0-9]+\.[0.9]+).*$
+          subjectPattern: ^(AUTOMATION|[a-zA-Z]+-((?![0]+)[0-9]+)|release\s+[0-9]+\.[0-9]+\.[0-9]+).*$
           subjectPatternError: |
             The subject "{subject}" found in the pull request title "{title}"
             didn't match the configured pattern. Please ensure that the subject
-            starts with a valid jira number, e.g. "XXXX-123 Reticulated splines"
-          # If the PR only contains a single commit, the action will validate that
-          # it matches the configured pattern.
-          validateSingleCommit: true
-          # Related to `validateSingleCommit` you can opt-in to validate that the PR
-          # title matches a single commit to avoid confusion.
-          validateSingleCommitMatchesPrTitle: true
+            starts with a valid ticket number.
+
+            e.g. "PCPS-123 Reticulated splines" or "AzDo-4567 Something Azurey"
+
+            PLEASE NOTE: PCPS-0000 is NOT a valid Jira!!!
