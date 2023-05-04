@@ -1,4 +1,4 @@
-# GitHub check that ensures PR title is compliant with naming standards
+# GitHub check that  ensures PR title is compliant with naming standards
 # See https://github.com/zeke/semantic-pull-requests
 
 name: Check PR title is compliant
