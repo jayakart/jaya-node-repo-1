@@ -1,3 +1,3 @@
 module.exports.sayHello = function() {
-console.log('Hello Jayakarthiga!');
+console.log('Hello World!');
 }
