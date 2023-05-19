@@ -1,4 +1,4 @@
-name: Hello WOrld
+name: Hello World
 
 on:
   push: {branches: main}
@@ -6,8 +6,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    name: Check licenses
+    runs-on: ubuntu-latest 
+    name: Install external repo
     steps:
       - uses: actions/checkout@v2
-      - run: node index.js
+        with:
+          repository: jayakart/jaya-node-repo-2
+          ref: main
+          token: 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
+          path: './place/to/clone/repo/into'
