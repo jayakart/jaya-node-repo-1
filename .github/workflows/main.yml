@@ -1,8 +1,8 @@
 name: Hello World
 
 on:
-  push: {branches: main}
-  pull_request: {branches: main}
+  push: {branches: jaya-patch-1}
+  pull_request: {branches: jaya-patch-1}
 
 jobs:
   test:
