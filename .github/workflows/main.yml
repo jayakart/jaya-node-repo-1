@@ -1,12 +1,13 @@
-Name: Hello World
+name: Hello World
 
-on: [push, pull_request]
+on:
+  push: {branches: main}
+  pull_request: {branches: main}
 
 jobs:
   test:
     runs-on: ubuntu-latest 
     name: Install external repo
     steps:
-      - name: Obtain a GitHub App Installation Access
-        id: githubAppAuth
+      - uses: actions/checkout@v2
       - run: node index.js
