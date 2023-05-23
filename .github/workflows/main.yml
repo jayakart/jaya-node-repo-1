@@ -3,9 +3,10 @@ Name: Hello World
 on: [push, pull_request]
 
 jobs:
-  hello-world:
-    runs-on: ubuntu-latest
-
+  test:
+    runs-on: ubuntu-latest 
+    name: Install external repo
     steps:
-     - name: Obtain a GitHub App Installation Access
-     - run: node index.js
+      - name: Obtain a GitHub App Installation Access
+        id: githubAppAuth
+      - run: node index.js
