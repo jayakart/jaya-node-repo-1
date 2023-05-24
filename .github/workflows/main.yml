@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: jayakart/jaya-node-repo-2
+          repository: lbg-cloud-platform/apigeex-deployment-scripts
           ref: main
           token:  ${{ secrets.secret2 }}
           path: './place/to/clone/repo/into/jaya/'
