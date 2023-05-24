@@ -14,4 +14,4 @@ jobs:
           repository: jayakart/jaya-node-repo-2
           ref: main
           token:  ${{ secrets.secret2 }}
-          path: './place/to/clone/repo/into'
+          path: './place/to/clone/repo/into/jaya/'
